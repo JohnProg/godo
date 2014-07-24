@@ -1,7 +1,7 @@
 Godo - Todo list API Server
 ====
 
-A to-do app similar to many others out there. 
+A to-do list API server written in Go similar to many others out there. 
 
 What separates this from many other task managers: 
 
