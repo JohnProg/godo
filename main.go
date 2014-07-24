@@ -2,6 +2,7 @@ package main
 
 import (
   "flag"
+  "fmt"
   "github.com/codegangsta/negroni"
   "github.com/gorilla/mux"
   "github.com/mb-dev/godo/config"
@@ -35,5 +36,6 @@ func main() {
   n.Use(negroni.HandlerFunc(util.CORSMiddleware)) // handle CORS
   n.Use(negroni.HandlerFunc(util.JWTMiddleware)) // handle authorization
   n.UseHandler(router)
+  fmt.Printf("Starting server in environment %s on port %s\n", *env, config.CurrentConfiguration.ServerPort)
   n.Run(config.CurrentConfiguration.ServerPort)
 }

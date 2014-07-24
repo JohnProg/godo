@@ -15,8 +15,8 @@ type EnvironmentConfiguration struct {
 }
 
 type Configuration struct {
-  development EnvironmentConfiguration
-  production EnvironmentConfiguration
+  Development EnvironmentConfiguration  `json:"development"`
+  Production EnvironmentConfiguration   `json:"production"`
 }
 
 const AppName string = "godo"
@@ -30,11 +30,15 @@ func LoadConfiguration(env string) {
       os.Exit(1)
   } 
   var config Configuration
-  json.Unmarshal(file, &config)
+  e = json.Unmarshal(file, &config)
+  if e != nil {
+      fmt.Printf("Error Unmarshal config file: %v\n", e)
+      os.Exit(1)
+  } 
   if(env == "production") {
-    CurrentConfiguration = config.production
+    CurrentConfiguration = config.Production
   } else {
-    CurrentConfiguration = config.development
+    CurrentConfiguration = config.Development
   }
   return
 }
