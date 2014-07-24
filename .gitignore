@@ -21,3 +21,7 @@ _testmain.go
 
 *.exe
 *.test
+config.json
+deploy.cfg
+gin-bin
+godo
